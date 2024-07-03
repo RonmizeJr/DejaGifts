@@ -15,12 +15,12 @@
 			<div class="flex flex-row gap-4 items-center">
 				<img src={MobileLogo} alt="Sediment" class="h-[40px] sm:hidden flex" />
 
-				<h2 class="sm:text-5xl text-3xl font-jura">Sediment Collection</h2>
+				<h2 class="sm:text-5xl text-3xl font-jura">Blanket Collection</h2>
 			</div>
-			<h4 class="font-light sm:text-3xl text-xl font-jura">Beauty. Crystallized.</h4>
+			<h4 class="font-light sm:text-3xl text-xl font-jura">Wrap yourself in beauty with these adorable pieces.</h4>
 			<a
 				class="uppercase bg-black mt-14 px-7 py-3 font-light"
-				href="/products?tag=Sediment Collection"
+				href="/products?tag=Blanket Collection"
 			>
 				shop now</a
 			>
@@ -43,7 +43,7 @@
 		>
 			<!-- CLD IMAGE SWITCH NEEDED -->
 			<CldImage
-				src={'products/kmqvpskg70djyzlv6l0x'}
+				src={'Spring Blossom'}
 				width={1920}
 				height={900}
 				objectFit="cover"
@@ -56,7 +56,7 @@
 		>
 			<!-- CLD IMAGE SWITCH NEEDED -->
 			<CldImage
-				src={'products/qz1ekcqehcdqze9ahg5w'}
+				src={'witches-brew'}
 				width={700}
 				height={1000}
 				objectFit="cover"
@@ -76,14 +76,14 @@
 		/> -->
 	</div>
 	<div class="w-full flex flex-col py-4 px-2 bg-black text-white">
-		<h3 class="text-center font-jura text-5xl pb-8 px-3">What is Sediment Art?</h3>
+		<h3 class="text-center font-jura text-5xl pb-8 px-3">What is Dejagifts?</h3>
 		<p class="text-center text-lg font-light pb-4 px-3">
 			We take photos of the natural beauty in nature and the world, and print them onto glass for
 			you to display in your home or office.
 		</p>
 
 		<p class="text-center text-lg font-light pb-8">
-			We sell made to order prints, and have them delivered right to your door.
+			We sell gifts for every season or occasion, and have them delivered right to your door.
 		</p>
 	</div>
 	<div class="w-full md:w-3/4 m-auto">
@@ -252,12 +252,12 @@
 				<a
 					href="https://www.instagram.com/sediment.art/?utm_source=ig_embed&amp;utm_campaign=loading"
 					style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
-					target="_blank">Sediment Art</a
+					target="_blank">Dejagifts</a
 				>
 				(@<a
 					href="https://www.instagram.com/sediment.art/?utm_source=ig_embed&amp;utm_campaign=loading"
 					style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
-					target="_blank">sediment.art</a
+					target="_blank">Dejagifts</a
 				>) • Instagram photos and videos
 			</p>
 		</div>

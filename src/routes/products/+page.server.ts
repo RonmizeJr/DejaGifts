@@ -11,11 +11,11 @@ export const load = async ({ url }) => {
 	const collectionName = allTags.length == 0 ? 'All Products' : allTags[0];
 	let collectionTagline = 'Everything we have to offer.';
 	switch (collectionName) {
-		case 'Sediment Collection':
+		case 'Blanket Collection':
 			collectionTagline = 'Elegance. Frozen in glass.';
 			break;
-		case 'Honor Collection':
-			collectionTagline = 'Crystallize your history.';
+		case 'Jewelry Collection':
+			collectionTagline = 'Find jewelry that fits your style.';
 	}
 
 	const sq = db

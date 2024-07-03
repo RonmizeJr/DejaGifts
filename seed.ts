@@ -48,8 +48,8 @@ const seed = async () => {
 			width: 12,
 			height: 12,
 			price: 5000,
-			stripeProductId: 'prod_OyCy8ckhrmV0IM',
-			stripePriceId: 'price_1OAGYBDVy0rtNA6WZ7fSwK2d',
+			stripeProductId: 'prod_QP5tYtXQ2lkaes',
+			stripePriceId: 'price_1PYHhoRqZghHGGfwuWlUO5eM',
 			productId: 'my_first_product'
 		},
 		{
@@ -57,8 +57,8 @@ const seed = async () => {
 			width: 16,
 			height: 16,
 			price: 7000,
-			stripeProductId: 'prod_OyCy8ckhrmV0IM',
-			stripePriceId: 'price_1OAGYBDVy0rtNA6WZ7fSwK2d',
+			stripeProductId: 'prod_QP5woqNxvqFgpC',
+			stripePriceId: 'price_1PYHkwRqZghHGGfw4ZGEv2ZG',
 			productId: 'my_first_product'
 		},
 		{
@@ -66,8 +66,8 @@ const seed = async () => {
 			width: 24,
 			height: 24,
 			price: 10000,
-			stripeProductId: 'prod_OyCy8ckhrmV0IM',
-			stripePriceId: 'price_1OAGYBDVy0rtNA6WZ7fSwK2d',
+			stripeProductId: 'prod_QP64kfmXuUEIvD',
+			stripePriceId: 'price_1PYHsGRqZghHGGfw8gKXGPRN',
 			productId: 'my_first_product'
 		},
 		{
@@ -75,8 +75,8 @@ const seed = async () => {
 			width: 12,
 			height: 12,
 			price: 5000,
-			stripeProductId: 'prod_OyCy8ckhrmV0IM',
-			stripePriceId: 'price_1OAGYBDVy0rtNA6WZ7fSwK2d',
+			stripeProductId: 'prod_QP671dLrAfKMw1',
+			stripePriceId: 'price_1PYHvfRqZghHGGfwiwvCTnpk',
 			productId: 'my_second_product'
 		},
 		{
@@ -84,8 +84,8 @@ const seed = async () => {
 			width: 16,
 			height: 16,
 			price: 7000,
-			stripeProductId: 'prod_OyCy8ckhrmV0IM',
-			stripePriceId: 'price_1OAGYBDVy0rtNA6WZ7fSwK2d',
+			stripeProductId: 'prod_QP69NsyDGymRiY',
+			stripePriceId: 'price_1PYHxfRqZghHGGfw7aU40oVd',
 			productId: 'my_second_product'
 		},
 		{
@@ -93,8 +93,8 @@ const seed = async () => {
 			width: 24,
 			height: 24,
 			price: 10000,
-			stripeProductId: 'prod_OyCy8ckhrmV0IM',
-			stripePriceId: 'price_1OAGYBDVy0rtNA6WZ7fSwK2d',
+			stripeProductId: 'prod_QP6BumooogA57a',
+			stripePriceId: 'price_1PYHzPRqZghHGGfwbwJtNeML',
 			productId: 'my_second_product'
 		}
 	];
@@ -107,25 +107,25 @@ const seed = async () => {
 	// TODO CLOUDINARY: update the cloudinaryIds with your own cloudinary ids
 	const images = [
 		{
-			cloudinaryId: 'txvp48xxnytjd024vnye',
+			cloudinaryId: 'wddhxgqgjn0vieahwzfx',
 			width: 1920,
 			height: 1280,
 			productId: 'my_first_product'
 		},
 		{
-			cloudinaryId: 'gfgvqtml3oujz2biaf9a',
+			cloudinaryId: 'ccptfiycaqap5bygykcq',
 			width: 1920,
 			height: 1280,
 			productId: 'my_second_product'
 		},
 		{
-			cloudinaryId: 'zav59raocmm7xmxrzgc4',
+			cloudinaryId: 'Spring Blossom',
 			width: 1920,
 			height: 1280,
 			productId: 'my_first_product'
 		},
 		{
-			cloudinaryId: 'iquk9myxvuqrtc3xbwqc',
+			cloudinaryId: 'xn7bysuclyztsts0tzqn',
 			width: 1920,
 			height: 1280,
 			productId: 'my_second_product'
@@ -139,12 +139,20 @@ const seed = async () => {
 	// create some product tags
 	const productTags = [
 		{
-			name: 'Natural',
-			desc: 'Anything formed in nature...'
+			name: 'Blankets',
+			desc: '100% Acrylic yarn with many styles'
 		},
 		{
-			name: 'Aerospace',
-			desc: 'Planes, spaceships, & more...'
+			name: 'Jewelry',
+			desc: 'Earrings, bracelets, & more...'
+		},
+		{
+			name: 'Clothing',
+			desc: 'Scarfs, hats, and more...'
+		},
+		{
+			name: 'Accessories',
+			desc: 'purses, wallets, and more...'
 		}
 	];
 
@@ -155,12 +163,16 @@ const seed = async () => {
 	// attach tags to products
 	const productsToTags = [
 		{
-			productId: 'my_first_product',
-			tagId: 'Natural'
+			productId: 'Spring Blosson',
+			tagId: 'Blankets'
 		},
 		{
-			productId: 'my_second_product',
-			tagId: 'Aerospace'
+			productId: 'Squirtle Keychain',
+			tagId: 'Accessories'
+		},
+		{
+			productId: 'Brown Hat',
+			tagId: 'Clothing'
 		}
 	];
 

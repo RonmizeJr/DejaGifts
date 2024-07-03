@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>Sediment Art</title>
+	<title>Dejagifts</title>
 	<meta
 		name="description"
 		content="Sediment Art, beauty crystalized and shipped straight to you."
