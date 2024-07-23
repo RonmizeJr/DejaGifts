@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx ./db/seed",
     "start": "next start",
     "lint": "next lint"
   },
