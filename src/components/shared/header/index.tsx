@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { PersonStandingIcon, ShoppingCart, UserIcon } from 'lucide-react';
+import { ShoppingCart, UserIcon } from 'lucide-react';
 import { APP_NAME } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 
