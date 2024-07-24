@@ -8,7 +8,7 @@ const Menu = () => {
   return (
     <>
       <div className='flex justify-end gap-3'>
-        <nav className='md:flex hidden w-full max-w-xs gap-1'>
+        <nav className='md:flex hidden w-full max-w-xs gap-2'>
           <Button asChild variant='ghost'>
             <Link href='/cart'>
               <ShoppingCart />
