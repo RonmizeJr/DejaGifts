@@ -43,7 +43,7 @@ const ProductDetails = async ({
           <div className='col-span-2 flex flex-col w-full  gap-8 p-5'>
             <div className='flex flex-col gap-6'>
               <p className='p-medium-16 rounded-full bg-grey-500/10   text-grey-500'>
-                {product.brand} {product.category}
+                {product.category}
               </p>
               <h1 className='h3-bold'>{product.name}</h1>
               <p>
