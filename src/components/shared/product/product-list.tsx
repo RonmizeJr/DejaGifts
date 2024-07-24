@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductCard from './product-card';
-import { Product } from '../../../../types';
+import { Product } from '../../../types';
 
 const ProductList = ({ data, title }: { data: Product[]; title: string }) => {
   return (

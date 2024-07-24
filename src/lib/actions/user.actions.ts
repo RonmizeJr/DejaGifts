@@ -6,8 +6,8 @@ import { signIn, signOut } from '@/auth';
 import { signInFormSchema, signUpFormSchema } from '../validator';
 import { formatError } from '../utils';
 import { hashSync } from 'bcrypt-ts-edge';
-import db from '@/db/drizzle';
-import { users } from '@/db/schema';
+import db from '../../../db/drizzle';
+import { users } from '../../../db/schema';
 
 // USER
 export async function signUp(prevState: unknown, formData: FormData) {

@@ -2,8 +2,8 @@
 
 import { desc, eq } from 'drizzle-orm';
 
-import db from '../../db/drizzle';
-import { products } from '../../db/schema';
+import db from '../../../db/drizzle';
+import { products } from '../../../db/schema';
 
 export async function getLatestProducts() {
   const data = await db.query.products.findMany({

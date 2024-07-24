@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Product } from '../../../../types';
+import { Product } from '../../../types';
 import ProductPrice from './product-price';
 
 const ProductCard = ({ product }: { product: Product }) => {
@@ -20,7 +20,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           />
         </Link>
       </CardHeader>
-      <CardContent className='p-6 grid gap-4'>
+      <CardContent className='p-4 grid gap-4'>
         <div className='grid gap-1.5 text-sm leading-4'>
           <Link href={`/products/${product.slug}`}>
             <h2 className='text-sm font-medium'>{product.name}</h2>
