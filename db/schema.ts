@@ -11,7 +11,7 @@ import {
   uuid,
 } from 'drizzle-orm/pg-core';
 import { AdapterAccountType } from 'next-auth/adapters';
-import { CartItem } from '@/types';
+import { CartItem, ShippingAddress } from '@/types';
 
 export const users = pgTable('user', {
   id: uuid('id').defaultRandom().primaryKey().notNull(),
@@ -21,6 +21,7 @@ export const users = pgTable('user', {
   password: text('password'),
   emailVerified: timestamp('emailVerified', { mode: 'date' }),
   image: text('image'),
+  address: json('address').$type<ShippingAddress>(),
 });
 
 export const accounts = pgTable(
