@@ -6,11 +6,12 @@ import { updateUserAddress } from '@/lib/actions/user.actions';
 import { ShippingAddressDefaultValues } from '@/lib/constants';
 import { shippingAddressSchema } from '@/lib/validator';
 import { ShippingAddress } from '@/types';
-import { useRouter } from 'next/router';
-import { useForm, SubmitHandler, Form } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTransition } from 'react';
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
@@ -115,7 +116,7 @@ export default function ShippingAddressForm({
                 name='state'
                 render={({ field }: { field: any }) => (
                   <FormItem className='w-full'>
-                    <FormLabel>City</FormLabel>
+                    <FormLabel>State</FormLabel>
                     <FormControl>
                       <Input placeholder='Enter State' {...field} />
                     </FormControl>
