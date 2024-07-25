@@ -86,7 +86,7 @@ export default function AddToCart({
             description: `${item.name} added to the cart`,
             action: (
               <ToastAction
-                className='bg-primary'
+                className='bg-primary text-white'
                 onClick={() => router.push('/cart')}
                 altText='Go to cart'
               >
