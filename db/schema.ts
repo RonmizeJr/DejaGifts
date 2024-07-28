@@ -117,7 +117,7 @@ export const carts = pgTable('cart', {
   createdAt: timestamp('createdAt').notNull().defaultNow(),
 });
 
-// Orders
+// ORDERS
 export const orders = pgTable('order', {
   id: uuid('id').defaultRandom().primaryKey(),
   userId: uuid('userId')
