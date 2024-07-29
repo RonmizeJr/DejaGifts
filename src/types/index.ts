@@ -3,7 +3,7 @@ import {
   paymentResultSchema,
   shippingAddressSchema,
 } from '@/lib/validator';
-import { carts, products } from '../../db/schema';
+import { carts, orderItems, orders, products } from '../../db/schema';
 import { InferSelectModel } from 'drizzle-orm';
 import { z } from 'zod';
 
@@ -17,3 +17,9 @@ export type CartItem = z.infer<typeof cartItemSchema>;
 // SHIPPING ADDRESS
 export type ShippingAddress = z.infer<typeof shippingAddressSchema>;
 export type PaymentResult = z.infer<typeof paymentResultSchema>;
+
+export type Order = InferSelectModel<typeof orders> & {
+  orderItems: OrderItem[];
+  user: { name: string | null; email: string };
+};
+export type OrderItem = InferSelectModel<typeof orderItems>;
