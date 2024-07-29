@@ -31,7 +31,6 @@ export default function PaymentMethodForm({
 
   const form = useForm<z.infer<typeof paymentMethodSchema>>({
     resolver: zodResolver(paymentMethodSchema),
-
     defaultValues: {
       type: preferredPaymentMethod || DEFAULT_PAYMENT_METHOD,
     },
@@ -40,6 +39,7 @@ export default function PaymentMethodForm({
   const [isPending, startTransition] = useTransition();
 
   const { toast } = useToast();
+
   async function onSubmit(values: z.infer<typeof paymentMethodSchema>) {
     startTransition(async () => {
       const res = await updateUserPaymentMethod(values);
