@@ -1,10 +1,10 @@
-import { auth } from '@/auth';
 import { getOrderById } from '@/lib/actions/order.actions';
+import { APP_NAME } from '@/lib/constants';
 import { notFound } from 'next/navigation';
 import OrderDetailsForm from './order-details-form';
 
 export const metadata = {
-  title: 'Order Details',
+  title: `Order Details - ${APP_NAME}`,
 };
 
 const OrderDetailsPage = async ({
@@ -16,8 +16,7 @@ const OrderDetailsPage = async ({
 }) => {
   const order = await getOrderById(id);
   if (!order) notFound();
-
-  const session = await auth();
+  order.user;
   return <OrderDetailsForm order={order} />;
 };
 
