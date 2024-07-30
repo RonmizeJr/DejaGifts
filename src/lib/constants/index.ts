@@ -3,6 +3,8 @@ export const APP_DESCRIPTION =
   process.env.NEXT_PUBLIC_APP_DESCRIPTION ||
   'An ecommerce application made with nextjs, pg, and shadcn-ui';
 
+export const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 3;
+
 export const PAYMENT_METHODS = process.env.PAYMENT_METHODS
   ? process.env.PAYMENT_METHODS.split(', ')
   : ['PayPal', 'Stripe', 'CashOnDelivery'];
