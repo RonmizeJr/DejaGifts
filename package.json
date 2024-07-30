@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
@@ -28,7 +28,7 @@
     "drizzle-orm": "^0.32.0",
     "drizzle-zod": "^0.5.1",
     "lucide-react": "^0.411.0",
-    "next": "14.2.5",
+    "next": "14.2.3",
     "next-auth": "5.0.0-beta.19",
     "react": "^18",
     "react-dom": "^18",
