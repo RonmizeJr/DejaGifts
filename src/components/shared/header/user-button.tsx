@@ -42,6 +42,11 @@ export default async function UserButton() {
               </p>
             </div>
           </DropdownMenuLabel>
+          <DropdownMenuItem>
+            <Link className='w-full' href='/user/profile'>
+              Profile
+            </Link>
+          </DropdownMenuItem>
           <DropdownMenuItem className='p-0 mb-1'>
             <Link className='w-full' href='/user/orders'>
               Order History
