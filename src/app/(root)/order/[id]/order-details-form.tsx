@@ -1,3 +1,11 @@
+'use client';
+
+import {
+  PayPalButtons,
+  PayPalScriptProvider,
+  usePayPalScriptReducer,
+} from '@paypal/react-paypal-js';
+
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -9,19 +17,14 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { useToast } from '@/components/ui/use-toast';
-import {
-  approvePayPalOrder,
-  createPayPalOrder,
-} from '@/lib/actions/order.actions';
 import { formatCurrency, formatDateTime, formatId } from '@/lib/utils';
 import { Order } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  usePayPalScriptReducer,
-  PayPalScriptProvider,
-  PayPalButtons,
-} from '@paypal/react-paypal-js';
+  approvePayPalOrder,
+  createPayPalOrder,
+} from '@/lib/actions/order.actions';
 
 export default function OrderDetailsForm({
   order,
