@@ -15,7 +15,7 @@ const Header = async () => {
               height={48}
               alt={`${APP_NAME} logo`}
             />
-            {APP_NAME}
+            <h2 className='font-semibold'>{APP_NAME}</h2>
           </Link>
         </div>
         <Menu />
