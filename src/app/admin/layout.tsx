@@ -2,8 +2,8 @@ import { APP_NAME } from '@/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Menu from '@/components/shared/header/menu';
 import MainNav from './main-nav';
+import Menu from '@/components/shared/header/menu';
 
 export default async function AdminLayout({
   children,

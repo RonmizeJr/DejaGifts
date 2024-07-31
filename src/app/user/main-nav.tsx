@@ -14,10 +14,6 @@ const links = [
     title: 'Orders',
     href: '/user/orders',
   },
-  {
-    title: 'Settings',
-    href: '/user/settings',
-  },
 ];
 export function MainNav({
   className,
