@@ -1,5 +1,11 @@
 import { auth } from '@/auth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { getOrderSummary } from '@/lib/actions/order.actions';
+import { APP_NAME } from '@/lib/constants';
+import { formatCurrency, formatDateTime, formatNumber } from '@/lib/utils';
+import { BadgeDollarSign, Barcode, CreditCard, Users } from 'lucide-react';
+import { Metadata } from 'next';
+import Charts from './charts';
 import {
   Table,
   TableBody,
@@ -8,18 +14,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { getOrderSummary } from '@/lib/actions/order.actions';
-import { APP_NAME } from '@/lib/constants';
-import { formatCurrency, formatDateTime, formatNumber } from '@/lib/utils';
-import { BadgeDollarSign, Barcode, CreditCard, Users } from 'lucide-react';
-import { Metadata } from 'next';
 import Link from 'next/link';
-import Charts from './charts';
 
 export const metadata: Metadata = {
   title: `Admin Dashboard - ${APP_NAME}`,
 };
-const DashboardPage = async () => {
+
+export default async function DashboardPage() {
   const session = await auth();
   if (session?.user.role !== 'admin')
     throw new Error('admin permission required');
@@ -27,7 +28,7 @@ const DashboardPage = async () => {
   const summary = await getOrderSummary();
 
   return (
-    <div className='space-y-2'>
+    <div className='space-y-4'>
       <h1 className='h2-bold'>Dashboard</h1>
 
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
@@ -80,7 +81,7 @@ const DashboardPage = async () => {
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
         <Card className='col-span-4'>
           <CardHeader>
-            <CardTitle>Sales Chart</CardTitle>
+            <CardTitle>Overview</CardTitle>
           </CardHeader>
           <CardContent className='pl-2'>
             <Charts
@@ -130,6 +131,4 @@ const DashboardPage = async () => {
       </div>
     </div>
   );
-};
-
-export default DashboardPage;
+}

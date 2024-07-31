@@ -27,7 +27,7 @@ const links = [
     href: '/admin/settings',
   },
 ];
-export function MainNav({
+export default function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
