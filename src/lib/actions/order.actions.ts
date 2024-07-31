@@ -5,11 +5,11 @@ import { getMyCart } from './cart.actions';
 import { getUserById } from './user.actions';
 import { redirect } from 'next/navigation';
 import { insertOrderSchema } from '../validator';
-import { count, desc, eq, sql } from 'drizzle-orm';
+import { count, desc, eq, sql, sum } from 'drizzle-orm';
 import { isRedirectError } from 'next/dist/client/components/redirect';
 import { formatError } from '../utils';
 import db from '../../../db/drizzle';
-import { carts, orderItems, orders, products } from '../../../db/schema';
+import { carts, orderItems, orders, products, users } from '../../../db/schema';
 import { revalidatePath } from 'next/cache';
 import { paypal } from '../paypal';
 import { PaymentResult } from '@/types';
@@ -206,3 +206,35 @@ export const updateOrderToPaid = async ({
       .where(eq(orders.id, orderId));
   });
 };
+
+export async function getOrderSummary() {
+  const ordersCount = await db.select({ count: count() }).from(orders);
+  const productsCount = await db.select({ count: count() }).from(products);
+  const usersCount = await db.select({ count: count() }).from(users);
+  const ordersPrice = await db
+    .select({ sum: sum(orders.totalPrice) })
+    .from(orders);
+
+  const salesData = await db
+    .select({
+      months: sql<string>`to_char(${orders.createdAt},'MM/YY')`,
+      totalSales: sql<number>`sum(${orders.totalPrice})`.mapWith(Number),
+    })
+    .from(orders)
+    .groupBy(sql`1`);
+  const latestOrders = await db.query.orders.findMany({
+    orderBy: [desc(orders.createdAt)],
+    with: {
+      user: { columns: { name: true } },
+    },
+    limit: 6,
+  });
+  return {
+    ordersCount,
+    productsCount,
+    usersCount,
+    ordersPrice,
+    salesData,
+    latestOrders,
+  };
+}
