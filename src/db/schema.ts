@@ -1,30 +1,40 @@
+import { CartItem, PaymentResult, ShippingAddress } from '@/types'
+import { relations } from 'drizzle-orm'
 import {
   boolean,
   integer,
   json,
   numeric,
   pgTable,
-  primaryKey,
   text,
   timestamp,
   uniqueIndex,
   uuid,
-} from 'drizzle-orm/pg-core';
-import { AdapterAccountType } from 'next-auth/adapters';
-import { CartItem, PaymentResult, ShippingAddress } from '@/types';
-import { relations } from 'drizzle-orm';
+} from 'drizzle-orm/pg-core'
+import { primaryKey } from 'drizzle-orm/pg-core/primary-keys'
+import { AdapterAccountType } from 'next-auth/adapters'
 
-export const users = pgTable('user', {
-  id: uuid('id').defaultRandom().primaryKey().notNull(),
-  name: text('name'),
-  email: text('email').notNull(),
-  role: text('role').notNull().default('user'),
-  password: text('password'),
-  emailVerified: timestamp('emailVerified', { mode: 'date' }),
-  image: text('image'),
-  address: json('address').$type<ShippingAddress>(),
-  paymentMethod: text('paymentMethod'),
-});
+// USERS
+export const users = pgTable(
+  'user',
+  {
+    id: uuid('id').defaultRandom().primaryKey().notNull(),
+    name: text('name').notNull().default('NO_NAME'),
+    email: text('email').notNull(),
+    role: text('role').notNull().default('user'),
+    password: text('password'),
+    emailVerified: timestamp('emailVerified', { mode: 'date' }),
+    image: text('image'),
+    address: json('address').$type<ShippingAddress>(),
+    paymentMethod: text('paymentMethod'),
+    createdAt: timestamp('createdAt').defaultNow(),
+  },
+  (table) => {
+    return {
+      userEmailIdx: uniqueIndex('user_email_idx').on(table.email),
+    }
+  }
+)
 
 export const accounts = pgTable(
   'account',
@@ -48,7 +58,7 @@ export const accounts = pgTable(
       columns: [account.provider, account.providerAccountId],
     }),
   })
-);
+)
 
 export const sessions = pgTable('session', {
   sessionToken: text('sessionToken').primaryKey(),
@@ -56,7 +66,7 @@ export const sessions = pgTable('session', {
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
   expires: timestamp('expires', { mode: 'date' }).notNull(),
-});
+})
 
 export const verificationTokens = pgTable(
   'verificationToken',
@@ -65,12 +75,10 @@ export const verificationTokens = pgTable(
     token: text('token').notNull(),
     expires: timestamp('expires', { mode: 'date' }).notNull(),
   },
-  (verificationToken) => ({
-    compositePk: primaryKey({
-      columns: [verificationToken.identifier, verificationToken.token],
-    }),
+  (vt) => ({
+    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
-);
+)
 
 // PRODUCTS
 export const products = pgTable(
@@ -81,6 +89,7 @@ export const products = pgTable(
     slug: text('slug').notNull(),
     category: text('category').notNull(),
     images: text('images').array().notNull(),
+    brand: text('brand').notNull(),
     description: text('description').notNull(),
     stock: integer('stock').notNull(),
     price: numeric('price', { precision: 12, scale: 2 }).notNull().default('0'),
@@ -95,9 +104,34 @@ export const products = pgTable(
   (table) => {
     return {
       productSlugIdx: uniqueIndex('product_slug_idx').on(table.slug),
-    };
+    }
   }
-);
+)
+
+export const reviews = pgTable('reviews', {
+  id: uuid('id').defaultRandom().primaryKey().notNull(),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  productId: uuid('productId')
+    .notNull()
+    .references(() => products.id, { onDelete: 'cascade' }),
+  rating: integer('rating').notNull(),
+  title: text('title').notNull(),
+  description: text('slug').notNull(),
+  isVerifiedPurchase: boolean('isVerifiedPurchase').notNull().default(true),
+  createdAt: timestamp('createdAt').notNull().defaultNow(),
+})
+export const productRelations = relations(products, ({ many }) => ({
+  reviews: many(reviews),
+}))
+export const reviewsRelations = relations(reviews, ({ one }) => ({
+  user: one(users, { fields: [reviews.userId], references: [users.id] }),
+  product: one(products, {
+    fields: [reviews.productId],
+    references: [products.id],
+  }),
+}))
 
 // CARTS
 export const carts = pgTable('cart', {
@@ -115,7 +149,7 @@ export const carts = pgTable('cart', {
   taxPrice: numeric('taxPrice', { precision: 12, scale: 2 }).notNull(),
   totalPrice: numeric('totalPrice', { precision: 12, scale: 2 }).notNull(),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
-});
+})
 
 // ORDERS
 export const orders = pgTable('order', {
@@ -138,11 +172,11 @@ export const orders = pgTable('order', {
   isDelivered: boolean('isDelivered').notNull().default(false),
   deliveredAt: timestamp('deliveredAt'),
   createdAt: timestamp('createdAt').notNull().defaultNow(),
-});
+})
 export const ordersRelations = relations(orders, ({ one, many }) => ({
   orderItems: many(orderItems),
   user: one(users, { fields: [orders.userId], references: [users.id] }),
-}));
+}))
 
 export const orderItems = pgTable(
   'orderItems',
@@ -164,11 +198,11 @@ export const orderItems = pgTable(
       columns: [orderItem.orderId, orderItem.productId],
     }),
   })
-);
+)
 
 export const orderItemsRelations = relations(orderItems, ({ one }) => ({
   order: one(orders, {
     fields: [orderItems.orderId],
     references: [orders.id],
   }),
-}));
+}))

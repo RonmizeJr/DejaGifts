@@ -1,4 +1,4 @@
-import Pagination from '@/components/shared/pagination';
+import Pagination from '@/components/shared/pagination'
 import {
   Table,
   TableBody,
@@ -6,30 +6,30 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { getMyOrders } from '@/lib/actions/order.actions';
-import { APP_NAME } from '@/lib/constants';
-import { formatCurrency, formatDateTime } from '@/lib/utils';
-import { Metadata } from 'next';
-import Link from 'next/link';
+} from '@/components/ui/table'
+import { getMyOrders } from '@/lib/actions/order.actions'
+import { APP_NAME } from '@/lib/constants'
+import { formatCurrency, formatDateTime } from '@/lib/utils'
+import { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: `My Orders - ${APP_NAME}`,
-};
+}
 export default async function OrdersPage({
   searchParams,
 }: {
-  searchParams: { page: string };
+  searchParams: { page: string }
 }) {
-  const page = Number(searchParams.page) || 1;
+  const page = Number(searchParams.page) || 1
   const orders = await getMyOrders({
     page,
     limit: 6,
-  });
+  })
   return (
-    <div className='space-y-2'>
-      <h2 className='h2-bold'>Orders</h2>
-      <div className='overflow-x-auto'>
+    <div className="space-y-2">
+      <h2 className="h2-bold">Orders</h2>
+      <div className="overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
@@ -61,7 +61,7 @@ export default async function OrdersPage({
                 </TableCell>
                 <TableCell>
                   <Link href={`/order/${order.id}`}>
-                    <span className='px-2'>Details</span>
+                    <span className="px-2">Details</span>
                   </Link>
                 </TableCell>
               </TableRow>
@@ -73,5 +73,5 @@ export default async function OrdersPage({
         )}
       </div>
     </div>
-  );
+  )
 }
