@@ -5,8 +5,8 @@ import type { NextAuthConfig } from 'next-auth';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
-import db from '../db/drizzle';
-import { carts, users } from '../db/schema';
+import db from '@/db/drizzle';
+import { carts, users } from '@/db/schema';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
